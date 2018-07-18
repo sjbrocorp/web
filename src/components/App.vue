@@ -17,7 +17,7 @@
 import LoginForm from './auth/login-form.vue'
 import MainContent from './layouts/main-content.vue'
 import { cookie, event } from '@/services'
-import { userStore } from '@/stores'
+import { sharedStore, userStore } from '@/stores'
 export default {
   components: {LoginForm, MainContent},
   data () {
@@ -34,7 +34,12 @@ export default {
     event.on(event.$names.LOGOUT, () => this.logout())
   },
   methods: {
-    init () {
+    async init () {
+      try {
+        await sharedStore.init()
+      } catch (error) {
+        console.log(error)
+      }
     },
     login () {
       this.authenticated = true

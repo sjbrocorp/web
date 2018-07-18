@@ -7,6 +7,9 @@ export const http = {
       .then(successCb)
       .catch(errorCb)
   },
+  get (url, successCb = null, errorCb = null) {
+    return this.request('get', url, {}, successCb, errorCb)
+  },
   post (url, data, successCb = null, errorCb = null) {
     return this.request('post', url, data, successCb, errorCb)
   },
@@ -33,8 +36,9 @@ export const http = {
     }, error => {
       if (error.response.status === 401) {
         event.emit(event.$names.LOGOUT)
+      } else {
+        return Promise.reject(error)
       }
-      return Promise.reject(error)
     })
   }
 }

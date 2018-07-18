@@ -67,7 +67,6 @@ describe('services/http', () => {
 
   describe('#request', () => {
     it('executes callback on success', async () => {
-      console.log('yo')
       let cbExecuted = false
       const cb = () => { cbExecuted = true }
       requestStub.resolves()
@@ -81,6 +80,14 @@ describe('services/http', () => {
       requestStub.rejects()
       await http.request('', url, data, null, cb)
       expect(cbExecuted).toBeTruthy()
+    })
+  })
+
+  describe('#get', () => {
+    it('creates a GET request', () => {
+      requestStub.resolves()
+      http.get(url)
+      requestStub.calledWith({ method: 'get', url, data: {} }).should.be.true
     })
   })
 
