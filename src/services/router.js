@@ -5,7 +5,14 @@ export const router = {
   routes: {
     '/home' () {
       c.loadMainView('home')
+    },
+    '/tickets' () {
+      c.loadMainView('tickets')
     }
+  },
+  init () {
+    this.loadState()
+    window.addEventListener('popstate', () => this.loadState(), true)
   },
   loadState () {
     if (!loc.getHash()) {

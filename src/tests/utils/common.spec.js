@@ -16,7 +16,7 @@ describe('utils/common', () => {
       const params = ['foo', 'bar']
       c.loadMainView(view, params)
       emitStub.called.should.be.true
-      emitStub.calledWith(config.events.LOAD_MAIN_VIEW, view, ...params).should.be.true
+      emitStub.calledWith(config.events.LOAD_MAIN_VIEW, view, params).should.be.true
     })
   })
 })

@@ -16,7 +16,7 @@
 <script>
 import LoginForm from './auth/login-form.vue'
 import MainContent from './layouts/main-content.vue'
-import { cookie, event } from '@/services'
+import { cookie, event, router } from '@/services'
 import { sharedStore, userStore } from '@/stores'
 export default {
   components: {LoginForm, MainContent},
@@ -37,6 +37,7 @@ export default {
     async init () {
       try {
         await sharedStore.init()
+        router.init()
       } catch (error) {
         console.log(error)
       }
