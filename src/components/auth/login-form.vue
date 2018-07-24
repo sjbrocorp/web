@@ -2,6 +2,10 @@
   <form
     class="login-form"
     @submit.prevent="login">
+    <img
+      class="login-form__logo"
+      src="static/img/logo.jpg"
+      alt="Comms Express Ticket Tracker">
     <div class="login-form__row">
       <label
         class="login-form__label"
@@ -24,10 +28,12 @@
         type="password"
         name="password">
     </div>
-    <button
-      class="login-form__submit"
-      type="submit"
-    >Login</button>
+    <div class="login-form__row">
+      <button
+        class="login-form__submit"
+        type="submit"
+      >Login</button>
+    </div>
   </form>
 </template>
 
@@ -57,19 +63,15 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "~#/variables";
   .login-form {
-    transform: translateY(-3rem);
+    transform: translateY(-10%);
     width: 35rem;
 
-    &::before {
-      border: 5px solid #ddd;
-      content: " ";
-      display: block;
-      background: url(/static/img/logo.jpg);
-      background-size: 27rem;
-      background-repeat: no-repeat;
-      background-position: 50% 85%;
-      height: 16rem;
+    &__logo {
+      width: 100%;
+      border: 5px solid $color-border-primary;
+      padding: 2rem 3rem .4rem 3rem;
     }
 
     &__row {
@@ -83,6 +85,7 @@ export default {
       width: 40%;
       text-align: right;
       padding-right: 5px;
+      display: block;
     }
 
     &__input {
@@ -96,10 +99,10 @@ export default {
       border: 1px solid #666;
       color: #fff;
       padding: 1px 7px;
-      margin-top: .7rem;
       margin-right: 2.5rem;
       text-shadow: rgb(51,51,51) -1px -1px 0;
-      float: right;
+      position: absolute;
+      right: 0;
 
       &:hover {
         cursor: pointer;
