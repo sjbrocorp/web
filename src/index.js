@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import '#/app.scss'
 import Vue from 'vue'
 import App from './components/App.vue'
 import { http, config, cookie } from '@/services'

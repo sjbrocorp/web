@@ -18,7 +18,7 @@ describe('services/router', () => {
       sandbox.stub(location, 'getHash').returns(undefined)
       const setHrefStub = sandbox.stub(location, 'setHref')
       router.loadState()
-      setHrefStub.calledWith(origin + pathname + '/#!/' + router.$HOME).should.be.true
+      setHrefStub.calledWith(origin + pathname + '#!/' + router.$HOME).should.be.true
     })
     it('loads the home path', () => {
       const path = '#!/home'
@@ -33,7 +33,7 @@ describe('services/router', () => {
       const hashPath = 'some-path'
       const setHrefStub = sandbox.stub(location, 'setHref')
       router.go(hashPath)
-      setHrefStub.calledWith(origin + pathname + '/#!/' + hashPath).should.be.true
+      setHrefStub.calledWith(origin + pathname + '#!/' + hashPath).should.be.true
     })
   })
 })

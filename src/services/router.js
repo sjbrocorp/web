@@ -32,7 +32,7 @@ export const router = {
       path = `/${path}`
     }
     if (path.indexOf('/#!') !== 0) {
-      path = `/#!${path}`
+      path = `#!${path}`
     }
     loc.setHref(loc.getOrigin() + loc.getPathname() + path)
   }

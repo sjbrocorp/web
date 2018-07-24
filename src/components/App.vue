@@ -57,3 +57,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import "~#/mixins";
+  .app {
+    &__login {
+      @include vertical-center();
+      display: flex;
+      height: 100vh;
+    }
+  }
+</style>
