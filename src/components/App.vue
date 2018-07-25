@@ -3,7 +3,7 @@
     <div
       v-if="authenticated"
       class="app__main">
-      <main-content/>
+      <main-wrapper/>
       <overlay/>
     </div>
     <div
@@ -16,12 +16,12 @@
 
 <script>
 import LoginForm from './auth/login-form.vue'
-import MainContent from './layouts/main-content.vue'
+import MainWrapper from './layouts/main-wrapper.vue'
 import Overlay from '@/components/shared/overlay.vue'
 import { cookie, event, router } from '@/services'
 import { sharedStore, userStore } from '@/stores'
 export default {
-  components: { LoginForm, MainContent, Overlay },
+  components: { LoginForm, MainWrapper, Overlay },
   data () {
     return {
       authenticated: false
@@ -63,12 +63,20 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "~#/variables";
   @import "~#/mixins";
   .app {
     &__login {
       @include vertical-center();
+    }
+    &__main {
+      background-color: $color-bgr-secondary;
+    }
+    &__login, &__main {
+      justify-content: center;
       display: flex;
       height: 100vh;
     }
+
   }
 </style>
