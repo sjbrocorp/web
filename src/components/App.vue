@@ -4,6 +4,7 @@
       v-if="authenticated"
       class="app__main">
       <main-content/>
+      <overlay/>
     </div>
     <div
       v-else
@@ -16,10 +17,11 @@
 <script>
 import LoginForm from './auth/login-form.vue'
 import MainContent from './layouts/main-content.vue'
+import Overlay from '@/components/shared/overlay.vue'
 import { cookie, event, router } from '@/services'
 import { sharedStore, userStore } from '@/stores'
 export default {
-  components: {LoginForm, MainContent},
+  components: { LoginForm, MainContent, Overlay },
   data () {
     return {
       authenticated: false
@@ -35,9 +37,11 @@ export default {
   },
   methods: {
     async init () {
+      event.emit(event.$names.SHOW_OVERLAY)
       try {
         await sharedStore.init()
         router.init()
+        event.emit(event.$names.HIDE_OVERLAY)
       } catch (error) {
         console.log(error)
       }
