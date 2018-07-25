@@ -30,5 +30,6 @@ export default {
   @import "~#/variables";
   .main-content {
     flex: 15;
+    display: flex;
   }
 </style>
