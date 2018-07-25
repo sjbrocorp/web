@@ -1,6 +1,6 @@
 export const config = {
   apiPath: '/api',
-  defaultView: 'home',
+  defaultView: 'tickets',
   events: {
     LOGOUT: 'logout',
     LOAD_MAIN_VIEW: 'load-main-view',

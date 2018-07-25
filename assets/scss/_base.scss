@@ -17,3 +17,9 @@ body {
   font-size: $font-size;
   overflow: hidden;
 }
+
+a, a:link, a:visited {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}

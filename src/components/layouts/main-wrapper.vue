@@ -20,7 +20,7 @@ export default {
   @import "~#/variables";
   .main-wrapper {
     background-color: $color-bgr-primary;
-    width: 92rem;
+    width: 102rem;
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem .5rem 2rem;
