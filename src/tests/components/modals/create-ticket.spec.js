@@ -1,6 +1,7 @@
-import CreateTicket from '@/components/modals/create-ticket.vue'
-import { alerts } from '@/services'
+import CreateTicket from '@/components/tickets/create-ticket.vue'
+import { alerts, router } from '@/services'
 import { ticketStore } from '@/stores'
+import stub from '@/stubs/ticket'
 import blob from '@/tests/blobs/ticket'
 
 describe('components/modals/create-ticket', () => {
@@ -13,20 +14,20 @@ describe('components/modals/create-ticket', () => {
   })
   it('opens', async () => {
     const wrapper = shallowMount(CreateTicket)
-    await wrapper.vm.open()
     wrapper.contains('form').should.be.true
   })
   it('creates a ticket when the form is submitted', async () => {
     const wrapper = shallowMount(CreateTicket)
-    await wrapper.vm.open()
     wrapper.setData({ newTicket: blob })
     const storeStub = sandbox.stub(ticketStore, 'store')
     const alertStub = sandbox.stub(alerts, 'success')
+    const routerStub = sandbox.stub(router, 'go')
     wrapper.find('form').trigger('submit')
     storeStub.calledWith(blob).should.be.true
     Vue.nextTick(() => {
       alertStub.called.should.be.true
-      expect(wrapper.vm.newTicket).toBeNull()
+      routerStub.calledWith('tickets').should.be.true
+      expect(wrapper.vm.newTicket).toEqual(stub)
     })
   })
 })

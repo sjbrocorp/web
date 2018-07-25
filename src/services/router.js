@@ -8,6 +8,9 @@ export const router = {
     },
     '/tickets' () {
       c.loadMainView('tickets')
+    },
+    '/tickets/create' () {
+      c.loadMainView('tickets/create')
     }
   },
   init () {

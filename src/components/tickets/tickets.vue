@@ -1,27 +1,55 @@
 <template>
   <section class="tickets">
-    <button @click="createTicket">New Ticket</button>
-    Tickets
+    <div class="tickets__header">
+      <div class="tickets__info">
+        Showing {{ totalTickets }} Open Tickets
+      </div>
+      <tickets-menu class="tickets__menu"/>
+    </div>
     <ticket-list :tickets="state.tickets"/>
-    <create-ticket ref="createTicket"/>
   </section>
 </template>
 
 <script>
 import { ticketStore } from '@/stores'
-import CreateTicket from '@/components/modals/create-ticket.vue'
 import TicketList from '@/components/tickets/ticket-list.vue'
+import TicketsMenu from '@/components/tickets/tickets-menu.vue'
 export default {
-  components: { CreateTicket, TicketList },
+  components: { TicketList, TicketsMenu },
   data () {
     return {
       state: ticketStore.state
     }
   },
-  methods: {
-    createTicket () {
-      this.$refs.createTicket.open()
+  computed: {
+    totalTickets () {
+      return this.state.tickets.length
     }
   }
 }
 </script>
+
+<style lang="scss">
+  .tickets {
+    display: flex;
+    flex-direction: column;
+    &__header {
+      display: flex;
+      border-bottom: 1px solid #a4a3a4;
+      line-height: 3rem;
+      height: 3rem;
+    }
+
+    &__info {
+      flex: 1;
+      color: #005B92;
+      font-weight: bold;
+    }
+
+    &__menu {
+      margin-right: 4rem;
+      flex: 2;
+      justify-content: flex-end;
+    }
+  }
+</style>

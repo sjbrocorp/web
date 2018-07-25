@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="newTicket"
     class="create-ticket">
     <form @submit.prevent="submitForm">
       <input
@@ -34,23 +33,21 @@
 
 <script>
 import { clone } from 'lodash'
-import { alerts } from '@/services'
+import { alerts, router } from '@/services'
 import { ticketStore } from '@/stores'
 export default {
   data () {
     return {
-      newTicket: null
+      newTicket: clone(ticketStore.stub)
     }
   },
   methods: {
-    open () {
-      this.newTicket = clone(ticketStore.stub)
-    },
     async submitForm () {
       try {
         await ticketStore.store(this.newTicket)
         alerts.success('Ticket created')
-        this.newTicket = null
+        this.newTicket = clone(ticketStore.stub)
+        router.go('tickets')
       } catch (error) {
         console.log(error)
       }

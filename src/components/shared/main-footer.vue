@@ -38,7 +38,7 @@
       width: 65%;
       display: flex;
       color: $color-white;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
 
       & > * {
         padding: 1rem;
