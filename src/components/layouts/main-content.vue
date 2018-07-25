@@ -27,6 +27,6 @@ export default {
 <style lang="scss">
   @import "~#/variables";
   .main-content {
-    flex: 8;
+    flex: 15;
   }
 </style>

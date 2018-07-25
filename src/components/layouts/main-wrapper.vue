@@ -23,5 +23,6 @@ export default {
     width: 92rem;
     display: flex;
     flex-direction: column;
+    padding: 1rem 2rem .5rem 2rem;
   }
 </style>
