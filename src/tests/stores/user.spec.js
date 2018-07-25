@@ -1,5 +1,6 @@
 import { userStore } from '@/stores'
 import { http } from '@/services'
+import blob from '@/tests/blobs/user'
 
 describe('stores/user', () => {
   let sandbox
@@ -25,6 +26,13 @@ describe('stores/user', () => {
       const httpDeleteStub = sandbox.stub(http, 'delete')
       userStore.logout()
       httpDeleteStub.calledWith('me', {}).should.be.true
+    })
+  })
+
+  describe('#init', () => {
+    it('sets the current user', () => {
+      userStore.init(blob)
+      expect(userStore.current).toEqual(blob)
     })
   })
 })
