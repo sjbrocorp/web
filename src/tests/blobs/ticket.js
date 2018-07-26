@@ -4,5 +4,7 @@ export default {
   contact: 'Test Contact',
   telephone: '01234567890',
   extension: '+00',
-  description: 'This is a test ticket.'
+  description: 'This is a test ticket.',
+  created_at: null,
+  updated_at: null
 }

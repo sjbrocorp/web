@@ -26,4 +26,27 @@ describe('stores/ticket', () => {
       expect(ticketStore.all).toContain(blob)
     })
   })
+  describe('#update', () => {
+    it('updates a ticket', async () => {
+      const id = 999
+      const ticket = { id, name: 'Foo' }
+      const updatedTicket = { id, name: 'Bar' }
+      ticketStore.init([ticket])
+      let httpPutStub = sandbox.stub(http, 'put')
+      httpPutStub.callsArgWith(2, { data: updatedTicket })
+      ticketStore.update(ticket, updatedTicket)
+      httpPutStub.calledWith(`tickets/${id}`, updatedTicket).should.be.true
+      expect(ticketStore.all.find((ticket) => {
+        return ticket.id === id
+      })).toEqual(updatedTicket)
+      expect(ticketStore.byId(id)).toEqual(updatedTicket)
+    })
+  })
+  describe('#byId', () => {
+    it('can retrieve a ticket by its id', () => {
+      ticketStore.init([blob])
+      const ticket = ticketStore.byId(blob.id)
+      expect(ticket.description).toEqual(blob.description)
+    })
+  })
 })

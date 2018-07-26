@@ -21,13 +21,16 @@
           <th
             class="ticket-list__col ticket-list__col--header ticket-list__col--description"
           >Description</th>
+          <th
+            class="ticket-list__col ticket-list__col--header ticket-list__col--status"
+          >Status</th>
         </tr>
       </thead>
     </table>
     <virtual-scroller
       :items="ticketRows"
       :renderers="renderers"
-      item-height="35"
+      item-height="25"
       content-tag="table"
       key-field="ticket.id"
       class="ticket-list__table ticket-list__table--scroller"
@@ -73,6 +76,7 @@ export default {
 <style lang="scss">
   @import "~#/variables";
   .ticket-list {
+    flex: 1;
     position: relative;
 
     &__table {
@@ -83,12 +87,29 @@ export default {
       &--header {
         background-color: #a4a3a4;
         color: $color-white;
+        height: 19rem;
       }
 
       &--scroller {
         position: absolute;
+        top: 2rem;
         left: 0;
         right: 0;
+        bottom: 0;
+
+        .item-container {
+          position: absolute;
+
+          table {
+            table-layout: fixed;
+            border-collapse: collapse;
+          }
+
+          .item {
+            line-height: 25px;
+            height: 25px;
+          }
+        }
       }
     }
 
@@ -98,8 +119,11 @@ export default {
       &:nth-child(2n) {
         background-color: rgba(#d9eeff, .5);
       }
-      &:hover {
-        background-color: rgba(#f6ff90, .3);
+      &--body {
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(#f6ff90, .3);
+        }
       }
     }
     &__col {
@@ -126,16 +150,20 @@ export default {
         /*flex: 2;*/
       }
       &--telephone {
-        width: 20%;
+        width: 15%;
         /*flex: 2;*/
       }
       &--extension {
-        width: 10%;
+        width: 5%;
         /*flex: 1;*/
       }
       &--description {
         width: 20%;
         /*flex: 3;*/
+      }
+      &--status {
+        width: 10%;
+        /*flex 3;*/
       }
     }
   }

@@ -1,5 +1,6 @@
 import { router } from '@/services'
 import { common, location } from '@/utils'
+import { ticketStore } from '@/stores'
 
 describe('services/router', () => {
   let sandbox, origin, pathname
@@ -26,6 +27,17 @@ describe('services/router', () => {
       sandbox.stub(location, 'getHash').returns(path)
       router.loadState()
       loadMainViewStub.calledWith('home').should.be.true
+    })
+    it('loads a ticket\'s edit page', () => {
+      const ticket = {
+        id: 999
+      }
+      const path = `#!/tickets/${ticket.id}/edit`
+      const loadMainViewStub = sandbox.stub(common, 'loadMainView')
+      sandbox.stub(location, 'getHash').returns(path)
+      sandbox.stub(ticketStore, 'byId').withArgs(ticket.id).returns(ticket)
+      router.loadState()
+      loadMainViewStub.calledWith('tickets/edit', ticket).should.be.true
     })
   })
   describe('#go', () => {

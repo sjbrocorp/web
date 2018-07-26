@@ -99,6 +99,14 @@ describe('services/http', () => {
     })
   })
 
+  describe('#put', () => {
+    it('creates a PUT request', () => {
+      requestStub.resolves()
+      http.put(url, data)
+      requestStub.calledWith({ method: 'put', url, data }).should.be.true
+    })
+  })
+
   describe('#delete', () => {
     it('creates a DELETE request', () => {
       requestStub.resolves()

@@ -1,11 +1,14 @@
+import { each } from 'lodash'
 import { http } from '@/services'
 import stub from '@/stubs/ticket'
+import Vue from 'vue'
 
 export const ticketStore = {
   stub,
   state: {
     tickets: [stub]
   },
+  cache: {},
   get all () {
     return this.state.tickets
   },
@@ -14,13 +17,35 @@ export const ticketStore = {
   },
   init (tickets) {
     this.all = tickets
+    each(this.all, ticket => {
+      this.setupTicket(ticket)
+    })
+  },
+  setupTicket (ticket) {
+    this.cache[ticket.id] = ticket
   },
   store (data) {
     return new Promise((resolve, reject) => {
       http.post('tickets', data, ({ data }) => {
-        this.all.push(data)
+        this.all.unshift(data)
+        this.setupTicket(data)
         resolve(data)
       }, error => reject(error))
     })
+  },
+  update (ticket, updatedTicket) {
+    return new Promise((resolve, reject) => {
+      http.put(`tickets/${ticket.id}`, updatedTicket, ({ data }) => {
+        const ticketIndex = this.all.findIndex(storedTicket => {
+          return storedTicket.id === ticket.id
+        })
+        Vue.set(this.all, ticketIndex, updatedTicket)
+        this.setupTicket(updatedTicket)
+        resolve(data)
+      }, error => reject(error))
+    })
+  },
+  byId (id) {
+    return this.cache[id]
   }
 }

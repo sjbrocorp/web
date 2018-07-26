@@ -1,24 +1,23 @@
 <template>
-  <div
-    class="create-ticket">
+  <section class="edit-ticket">
     <form
-      class="create-ticket__form"
+      class="edit-ticket__form"
       @submit.prevent="submitForm"
     >
-      <div class="create-ticket__header">
-        Please fill in the form below to open a new ticket.
+      <div class="edit-ticket__header">
+        You may update the ticket using the fields below.
       </div>
-      <div class="create-ticket__fields">
+      <div class="edit-ticket__fields">
         <label
           for="email"
-          class="create-ticket__field create-ticket__field--required">
-          <span class="create-ticket__label">
+          class="edit-ticket__field edit-ticket__field--required">
+          <span class="edit-ticket__label">
             Customer Email Address:
           </span>
           <input
             id="email"
-            v-model="newTicket.email"
-            class="create-ticket__input"
+            v-model="copiedTicket.email"
+            class="edit-ticket__input"
             type="email"
             name="email"
             required
@@ -26,100 +25,130 @@
         </label>
         <label
           for="name"
-          class="create-ticket__field create-ticket__field--required">
-          <span class="create-ticket__label">
+          class="edit-ticket__field edit-ticket__field--required">
+          <span class="edit-ticket__label">
             Customer Full Name:
           </span>
           <input
             id="name"
-            v-model="newTicket.name"
-            class="create-ticket__input"
+            v-model="copiedTicket.name"
+            class="edit-ticket__input"
             type="text"
             name="name"
             required>
         </label>
         <label
           for="contact"
-          class="create-ticket__field">
-          <span class="create-ticket__label">
+          class="edit-ticket__field">
+          <span class="edit-ticket__label">
 
             Other Contact:
           </span>
           <input
             id="contact"
-            v-model="newTicket.contact"
-            class="create-ticket__input"
+            v-model="copiedTicket.contact"
+            class="edit-ticket__input"
             type="text"
             name="contact">
         </label>
         <label
           for="telephone"
-          class="create-ticket__field">
-          <span class="create-ticket__label">
+          class="edit-ticket__field">
+          <span class="edit-ticket__label">
 
             Customer Telephone:
           </span>
           <input
             id="telephone"
-            v-model="newTicket.telephone"
-            class="create-ticket__input"
+            v-model="copiedTicket.telephone"
+            class="edit-ticket__input"
             type="text"
             name="telephone">
         </label>
         <label
           for="extension"
-          class="create-ticket__field">
-          <span class="create-ticket__label">
+          class="edit-ticket__field">
+          <span class="edit-ticket__label">
 
             Ext:
           </span>
           <input
             id="extension"
-            v-model="newTicket.extension"
-            class="create-ticket__input"
+            v-model="copiedTicket.extension"
+            class="edit-ticket__input"
             type="text"
             name="extension">
         </label>
         <label
           for="description"
-          class="create-ticket__field create-ticket__field--required">
-          <span class="create-ticket__label">
+          class="edit-ticket__field edit-ticket__field--required">
+          <span class="edit-ticket__label">
             Description:
           </span>
           <textarea
             id="description"
-            v-model="newTicket.description"
-            class="create-ticket__input"
+            v-model="copiedTicket.description"
+            class="edit-ticket__input"
             name="description"
             required
           />
         </label>
+        <label
+          for="status"
+          class="edit-ticket__field">
+          <span class="edit-ticket__label">
+            Status:
+          </span>
+          <select
+            id="status"
+            v-model="copiedTicket.status"
+            name="status"
+          >
+            <option value="Pending">Pending</option>
+            <option value="Investigating">Investigating</option>
+            <option value="Awaiting Reply">Awaiting Reply</option>
+            <option value="Solved">Solved</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </label>
       </div>
-      <div class="create-ticket__buttons">
+      <div class="edit-ticket__buttons">
         <button
-          class="create-ticket__submit"
-          type="submit">Submit</button>
+          class="edit-ticket__submit"
+          type="submit">Update</button>
       </div>
     </form>
-  </div>
+  </section>
 </template>
 
 <script>
 import { clone } from 'lodash'
-import { alerts, router } from '@/services'
+import { config, event, router, alerts } from '@/services'
 import { ticketStore } from '@/stores'
 export default {
   data () {
     return {
-      newTicket: clone(ticketStore.stub)
+      ticket: clone(ticketStore.stub),
+      copiedTicket: clone(ticketStore.stub)
     }
+  },
+  created () {
+    event.on({
+      [config.events.LOAD_MAIN_VIEW]: (view, ticket) => {
+        if (view === 'tickets/edit') {
+          this.ticket = ticket
+          this.copiedTicket = clone(ticket)
+        }
+      }
+    })
   },
   methods: {
     async submitForm () {
       try {
-        await ticketStore.store(this.newTicket)
-        alerts.success('Ticket created')
-        this.newTicket = clone(ticketStore.stub)
+        await ticketStore.update(this.ticket, this.copiedTicket)
+        alerts.success('Ticket updated')
+        this.ticket = clone(ticketStore.stub)
+        this.copiedTicket = clone(ticketStore.stub)
         router.go('tickets')
       } catch (error) {
         console.log(error)
@@ -130,10 +159,10 @@ export default {
 </script>
 
 <style lang="scss">
-  .create-ticket {
-      height: 100%;
-      width: 100%;
-      display: flex;
+  .edit-ticket {
+    height: 100%;
+    width: 100%;
+    display: flex;
     &__header {
       padding-bottom: 3px;
       border-bottom: 1px solid rgba(grey, .4);

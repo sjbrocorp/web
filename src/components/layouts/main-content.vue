@@ -1,8 +1,9 @@
 <template>
   <section class="main-content">
-    <home v-if="current === 'home'"/>
-    <tickets v-if="current === 'tickets'"/>
-    <create-ticket v-if="current === 'tickets/create'"/>
+    <home v-show="current === 'home'"/>
+    <tickets v-show="current === 'tickets'"/>
+    <create-ticket v-show="current === 'tickets/create'"/>
+    <edit-ticket v-show="current === 'tickets/edit'"/>
   </section>
 </template>
 
@@ -11,8 +12,9 @@ import { config, event } from '@/services'
 import Home from '@/components/home/home.vue'
 import Tickets from '@/components/tickets/tickets.vue'
 import CreateTicket from '@/components/tickets/create-ticket.vue'
+import EditTicket from '@/components/tickets/edit-ticket.vue'
 export default {
-  components: { Home, Tickets, CreateTicket },
+  components: { Home, Tickets, CreateTicket, EditTicket },
   data () {
     return {
       current: config.defaultView

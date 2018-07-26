@@ -1,4 +1,5 @@
 import { location as loc, common as c } from '@/utils'
+import { ticketStore } from '@/stores'
 
 export const router = {
   $HOME: 'home',
@@ -11,6 +12,12 @@ export const router = {
     },
     '/tickets/create' () {
       c.loadMainView('tickets/create')
+    },
+    '/tickets/(\\d+)/edit' (id) {
+      const ticket = ticketStore.byId(~~id)
+      if (ticket) {
+        c.loadMainView('tickets/edit', ticket)
+      }
     }
   },
   init () {

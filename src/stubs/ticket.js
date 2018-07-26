@@ -4,5 +4,7 @@ export default {
   contact: '',
   telephone: '',
   extension: '',
-  description: ''
+  description: '',
+  created_at: null,
+  updated_at: null
 }
