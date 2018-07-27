@@ -23,6 +23,7 @@ export const ticketStore = {
   },
   setupTicket (ticket) {
     this.cache[ticket.id] = ticket
+    Vue.set(ticket, 'messages', [])
   },
   store (data) {
     return new Promise((resolve, reject) => {
@@ -33,6 +34,16 @@ export const ticketStore = {
       }, error => reject(error))
     })
   },
+
+  storeMessage (ticket, data) {
+    return new Promise((resolve, reject) => {
+      http.post(`tickets/${ticket.id}/messages`, data, ({ data }) => {
+        ticket.messages.unshift(data)
+        resolve(data)
+      }, error => reject(error))
+    })
+  },
+
   update (ticket, updatedTicket) {
     return new Promise((resolve, reject) => {
       http.put(`tickets/${ticket.id}`, updatedTicket, ({ data }) => {

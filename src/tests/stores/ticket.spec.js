@@ -1,6 +1,7 @@
 import { ticketStore } from '@/stores'
 import { http } from '@/services'
-import blob from '@/tests/blobs/ticket'
+import ticketBlob from '@/tests/blobs/ticket'
+import messageBlob from '@/tests/blobs/message'
 
 describe('stores/ticket', () => {
   let sandbox
@@ -13,17 +14,28 @@ describe('stores/ticket', () => {
   })
   describe('#init', () => {
     it('correctly gathers tickets', () => {
-      ticketStore.init([blob])
+      ticketStore.init([ticketBlob])
       ticketStore.all.length.should.equal(1)
     })
   })
   describe('#store', () => {
     it('stores a new ticket', async () => {
       let httpPostStub = sandbox.stub(http, 'post')
-      httpPostStub.callsArgWith(2, { data: blob })
-      ticketStore.store(blob)
-      httpPostStub.calledWith('tickets', blob).should.be.true
-      expect(ticketStore.all).toContain(blob)
+      httpPostStub.callsArgWith(2, { data: ticketBlob })
+      ticketStore.store(ticketBlob)
+      httpPostStub.calledWith('tickets', ticketBlob).should.be.true
+      expect(ticketStore.all).toContain(ticketBlob)
+    })
+  })
+  describe('#storeMessage', () => {
+    it('stores a new message', async () => {
+      let httpPostStub = sandbox.stub(http, 'post')
+      let ticket = ticketBlob
+      ticketStore.init([ticketBlob])
+      httpPostStub.callsArgWith(2, { data: ticketBlob })
+      ticketStore.storeMessage(ticket, messageBlob)
+      httpPostStub.calledWith(`tickets/${ticket.id}/messages`, ticketBlob).should.be.true
+      expect(ticketStore.byId(ticket.id).messages).toContain(ticketBlob)
     })
   })
   describe('#update', () => {
@@ -44,9 +56,9 @@ describe('stores/ticket', () => {
   })
   describe('#byId', () => {
     it('can retrieve a ticket by its id', () => {
-      ticketStore.init([blob])
-      const ticket = ticketStore.byId(blob.id)
-      expect(ticket.description).toEqual(blob.description)
+      ticketStore.init([ticketBlob])
+      const ticket = ticketStore.byId(ticketBlob.id)
+      expect(ticket.description).toEqual(ticketBlob.description)
     })
   })
 })

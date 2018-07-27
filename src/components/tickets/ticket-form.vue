@@ -280,6 +280,8 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(grey, .4);
     &__header {
       padding-bottom: 3px;
       border-bottom: 1px solid rgba(grey, .4);
@@ -290,7 +292,6 @@ export default {
       height: 90%;
       display: flex;
       flex-direction: column;
-      border-bottom: 1px solid rgba(grey, .4);
     }
     &__field {
       padding: 3px 0;
