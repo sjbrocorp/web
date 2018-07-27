@@ -24,11 +24,10 @@ describe('components/modals/create-ticket', () => {
     const routerStub = sandbox.stub(router, 'go')
     wrapper.find('form').trigger('submit')
     storeStub.calledWith(blob).should.be.true
-    Vue.nextTick(() => {
-      alertStub.called.should.be.true
-      routerStub.calledWith('tickets').should.be.true
-      expect(wrapper.vm.newTicket).toEqual(stub)
-    })
+    await wrapper.vm.$nextTick()
+    alertStub.called.should.be.true
+    routerStub.calledWith('tickets').should.be.true
+    expect(wrapper.vm.newTicket).toEqual(stub)
   })
   it('can edit a ticket', async () => {
     const wrapper = shallowMount(TicketForm, { propsData: { type: 'edit' } })
@@ -42,11 +41,10 @@ describe('components/modals/create-ticket', () => {
     const routerStub = sandbox.stub(router, 'go')
     wrapper.find('form').trigger('submit')
     updateStub.calledWith(existingTicket, newTicket).should.be.true
-    Vue.nextTick(() => {
-      alertStub.called.should.be.true
-      routerStub.calledWith('tickets').should.be.true
-      expect(wrapper.vm.existingTicket).toEqual(null)
-      expect(wrapper.vm.newTicket).toEqual(stub)
-    })
+    await wrapper.vm.$nextTick()
+    alertStub.called.should.be.true
+    routerStub.calledWith('tickets').should.be.true
+    expect(wrapper.vm.existingTicket).toEqual(null)
+    expect(wrapper.vm.newTicket).toEqual(stub)
   })
 })

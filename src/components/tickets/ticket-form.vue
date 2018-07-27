@@ -147,14 +147,14 @@ export default {
     })
   },
   methods: {
-    submitForm () {
+    async submitForm () {
       try {
         switch (this.type) {
           case 'create':
-            this.storeTicket()
+            await this.storeTicket()
             break
           case 'edit':
-            this.updateTicket()
+            await this.updateTicket()
             break
         }
         router.go('tickets')
