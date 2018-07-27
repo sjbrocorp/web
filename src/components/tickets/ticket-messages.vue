@@ -4,6 +4,7 @@
       <li
         v-for="message in ticket.messages"
         :key="message.id">
+        {{ message.created_at }} - {{ message.owner.name }} <br>
         {{ message.body }}
       </li>
     </ul>
@@ -59,3 +60,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import "~#/mixins";
+  .ticket-messages {
+    display: flex;
+    flex-direction: column;
+    &__feed {
+      flex: 1;
+    }
+    &__form {
+      flex: 1;
+    }
+    &__submit {
+      @include submit-button();
+      display: flex;
+    }
+  }
+</style>

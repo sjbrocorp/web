@@ -23,7 +23,6 @@ export const ticketStore = {
   },
   setupTicket (ticket) {
     this.cache[ticket.id] = ticket
-    Vue.set(ticket, 'messages', [])
   },
   store (data) {
     return new Promise((resolve, reject) => {

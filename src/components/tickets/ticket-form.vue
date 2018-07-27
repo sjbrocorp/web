@@ -275,6 +275,7 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "~#/mixins";
   .ticket-form {
     height: 100%;
     width: 100%;
@@ -318,13 +319,7 @@ export default {
       justify-content: flex-end;
     }
     &__submit {
-      background-color: #DB8606;
-      border: 1px solid #666;
-      color: #fff;
-      padding: 1px 7px;
-      margin-right: 2.5rem;
-      text-shadow: rgb(51,51,51) -1px -1px 0;
-
+      @include submit-button();
     }
   }
 </style>
