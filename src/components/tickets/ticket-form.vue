@@ -86,12 +86,47 @@
           id="source"
           v-model="newTicket.source"
           name="source"
+          required
         >
           <option
             value=""
             disabled>Select One</option>
           <option value="Email">Email</option>
           <option value="Phone">Phone</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <label
+        for="productType"
+        class="ticket-form__field">
+        <span class="ticket-form__label">
+          Product Type:
+        </span>
+        <select
+          id="productType"
+          v-model="newTicket.productType"
+          name="productType"
+        >
+          <option
+            value=""
+            disabled>Select One</option>
+          <option value="Box Cable">Box Cable</option>
+          <option value="Cabinet Accessory">Cabinet Accessory</option>
+          <option value="Computer Cable">Computer Cable</option>
+          <option value="Console Drawer / KVM">Console Drawer / KVM</option>
+          <option value="Data/Server Cabinet">Data/Server Cabinet</option>
+          <option value="Data Centre Accessory">Data Centre Accessory</option>
+          <option value="Fibre Cable">Fibre Cable</option>
+          <option value="Modules/Outlets">Modules/Outlets</option>
+          <option value="Network Switch">Network Switch</option>
+          <option value="Patch Cable">Patch Cable</option>
+          <option value="Patch Panel">Patch Panel</option>
+          <option value="PDU Units">PDU Units</option>
+          <option value="Telephone Accessory">Telephone Accessory</option>
+          <option value="Test Tool">Test Tool</option>
+          <option value="Trunking">Trunking</option>
+          <option value="UPS / NAS">UPS / NAS</option>
+          <option value="Wall Cabinet">Wall Cabinet</option>
           <option value="Other">Other</option>
         </select>
       </label>
