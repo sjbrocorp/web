@@ -15,6 +15,7 @@ export const router = {
     },
     '/tickets/(\\d+)/edit' (id) {
       const ticket = ticketStore.byId(~~id)
+      console.log({ticket})
       if (ticket) {
         c.loadMainView('tickets/edit', ticket)
       }

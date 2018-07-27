@@ -77,6 +77,25 @@
           name="extension">
       </label>
       <label
+        for="source"
+        class="ticket-form__field ticket-form__field--required">
+        <span class="ticket-form__label">
+          Source:
+        </span>
+        <select
+          id="source"
+          v-model="newTicket.source"
+          name="source"
+        >
+          <option
+            value=""
+            disabled>Select One</option>
+          <option value="Email">Email</option>
+          <option value="Phone">Phone</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <label
         for="description"
         class="ticket-form__field ticket-form__field--required">
         <span class="ticket-form__label">
