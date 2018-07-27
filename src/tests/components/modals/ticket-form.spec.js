@@ -4,7 +4,7 @@ import { ticketStore } from '@/stores'
 import stub from '@/stubs/ticket'
 import blob from '@/tests/blobs/ticket'
 
-describe('components/modals/create-ticket', () => {
+describe('components/tickets/ticket-form', () => {
   let sandbox
   beforeEach(() => {
     sandbox = sinon.createSandbox()
