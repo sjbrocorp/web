@@ -139,6 +139,10 @@ export default {
   created () {
     event.on({
       [config.events.LOAD_MAIN_VIEW]: (view, ticket) => {
+        if (view === 'tickets/create') {
+          this.existingTicket = null
+          this.newTicket = clone(ticketStore.stub)
+        }
         if (view === 'tickets/edit') {
           this.existingTicket = ticket
           this.newTicket = clone(ticket)
