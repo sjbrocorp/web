@@ -165,6 +165,21 @@ export default {
         width: 10%;
         /*flex 3;*/
       }
+      &--pending {
+        background-color: #fee3e4;
+      }
+      &--investigating {
+        background-color: #ffffee;
+      }
+      &--awaiting-reply {
+        background-color: #d9d8ff;
+      }
+      &--solved {
+        background-color: #d8ffd8;
+      }
+      &--completed {
+        background-color: #f4f3f4;
+      }
     }
   }
 </style>

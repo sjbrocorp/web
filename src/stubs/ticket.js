@@ -5,6 +5,7 @@ export default {
   telephone: '',
   extension: '',
   description: '',
+  status: '',
   created_at: null,
   updated_at: null
 }

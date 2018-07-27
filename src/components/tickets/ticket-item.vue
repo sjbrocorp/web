@@ -8,7 +8,10 @@
     <td class="ticket-list__col ticket-list__col--telephone">{{ ticket.telephone }}</td>
     <td class="ticket-list__col ticket-list__col--extension">{{ ticket.extension }}</td>
     <td class="ticket-list__col ticket-list__col--description">{{ ticket.description }}</td>
-    <td class="ticket-list__col ticket-list__col--status">{{ ticket.status }}</td>
+    <td
+      :class="`ticket-list__col--${statusStyle}`"
+      class="ticket-list__col ticket-list__col--status"
+    >{{ ticket.status }}</td>
   </tr>
 </template>
 
@@ -21,6 +24,9 @@ export default {
   computed: {
     ticket () {
       return this.item.ticket
+    },
+    statusStyle () {
+      return this.ticket.status.split(' ').join('-').toLowerCase()
     }
   },
   methods: {
