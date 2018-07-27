@@ -131,6 +131,45 @@
         </select>
       </label>
       <label
+        for="problemType"
+        class="ticket-form__field">
+        <span class="ticket-form__label">
+          Problem Type:
+        </span>
+        <select
+          id="problemType"
+          v-model="newTicket.problemType"
+          name="problemType"
+        >
+          <option
+            value=""
+            disabled>Select One</option>
+          <option value="Admin Error">Admin Error</option>
+          <option value="Back Order Delay">Back Order Delay</option>
+          <option value="Billing Error">Billing Error</option>
+          <option value="Cabinet Damaged">Cabinet Damaged</option>
+          <option value="Courier Missort">Courier Missort</option>
+          <option value="Customer Complaint">Customer Complaint</option>
+          <option value="Customer Ordered Incorrect Cabinet">Customer Ordered Incorrect Cabinet</option>
+          <option value="Customer Ordered Incorrect Item">Customer Ordered Incorrect Item</option>
+          <option value="Damaged/Faulty Goods">Damaged/Faulty Goods</option>
+          <option value="Duplicate Order">Duplicate Order</option>
+          <option value="General Inquiry">General Inquiry</option>
+          <option value="Goods No Longer Required">Goods No Longer Required</option>
+          <option value="Incorrect Cabinet Received">Incorrect Cabinet Received</option>
+          <option value="Incorrect Item Received">Incorrect Item Received</option>
+          <option value="Late/No Delivery">Late/No Delivery</option>
+          <option value="Missing Goods">Missing Goods</option>
+          <option value="Product Defect">Product Defect</option>
+          <option value="Product Enquiry">Product Enquiry</option>
+          <option value="Purchase Order">Purchase Order</option>
+          <option value="Quote">Quote</option>
+          <option value="Returns Form">Returns Form</option>
+          <option value="Web Quote">Web Quote</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <label
         for="description"
         class="ticket-form__field ticket-form__field--required">
         <span class="ticket-form__label">
