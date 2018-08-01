@@ -1,7 +1,7 @@
-import LoginForm from '@/components/auth/login-form.vue'
+import LoginForm from '@/components/auth/login-page.vue'
 import { userStore } from '@/stores'
 
-describe('components/auth/login-form', () => {
+describe('components/auth/login-page', () => {
   it('triggers login when form is submitted', () => {
     let email = 'test@test.com'
     let password = 'secret'

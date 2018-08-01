@@ -206,7 +206,7 @@
     </div>
     <div class="ticket-form__buttons">
       <button
-        class="ticket-form__submit"
+        class="btn btn--submit"
         type="submit"><slot name="submit"/></button>
     </div>
   </form>
@@ -274,8 +274,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "~#/mixins";
+<style lang="scss" scoped>
+  @import "~#/abstracts/mixins";
   .ticket-form {
     height: 100%;
     width: 100%;
@@ -317,9 +317,6 @@ export default {
       padding-top: 5px;
       display: flex;
       justify-content: flex-end;
-    }
-    &__submit {
-      @include submit-button();
     }
   }
 </style>

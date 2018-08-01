@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .edit-ticket {
     height: 100%;
     width: 100%;

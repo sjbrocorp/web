@@ -1,12 +1,13 @@
 <template>
   <section class="tickets">
     <div class="tickets__header">
-      <div class="tickets__info">
-        Showing {{ totalTickets }} Open Tickets
-      </div>
       <tickets-menu class="tickets__menu"/>
+      <search-bar class="tickets__search"/>
     </div>
-    <ticket-list :tickets="state.tickets"/>
+    <ticket-list
+      :tickets="state.tickets"
+      class="tickets__list"
+    />
   </section>
 </template>
 
@@ -14,42 +15,37 @@
 import { ticketStore } from '@/stores'
 import TicketList from '@/components/tickets/ticket-list.vue'
 import TicketsMenu from '@/components/tickets/tickets-menu.vue'
+import SearchBar from '@/components/shared/search-bar.vue'
 export default {
-  components: { TicketList, TicketsMenu },
+  components: { TicketList, TicketsMenu, SearchBar },
   data () {
     return {
       state: ticketStore.state
-    }
-  },
-  computed: {
-    totalTickets () {
-      return this.state.tickets.length
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .tickets {
-    display: flex;
-    flex-direction: column;
     &__header {
-      display: flex;
       border-bottom: 1px solid #a4a3a4;
-      line-height: 3rem;
-      height: 3rem;
-    }
-
-    &__info {
-      flex: 1;
-      color: #005B92;
-      font-weight: bold;
+      padding: 1rem 2rem;
+      height: 4.5rem;
     }
 
     &__menu {
-      margin-right: 4rem;
-      flex: 2;
-      justify-content: flex-end;
+      display: inline-block;
+      width: 50%
+    }
+
+    &__search {
+      width: 49%;
+      display: inline-block;
+    }
+
+    &__list {
+      height: calc(100% - 4.5rem);
     }
   }
 </style>

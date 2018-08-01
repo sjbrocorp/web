@@ -44,6 +44,8 @@ export const ticketStore = {
   },
 
   update (ticket, updatedTicket) {
+    // Don't try to send the messages array with the request
+    delete updatedTicket.messages
     return new Promise((resolve, reject) => {
       http.put(`tickets/${ticket.id}`, updatedTicket, ({ data }) => {
         const ticketIndex = this.all.findIndex(storedTicket => {

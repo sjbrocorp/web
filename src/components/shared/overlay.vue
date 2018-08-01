@@ -37,9 +37,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "~#/mixins";
-  @import "~#/variables";
+<style lang="scss" scoped>
+  @import "~#/abstracts/mixins";
+  @import "~#/abstracts/variables";
   .overlay {
     background-color: $color-overlay;
     position: fixed;

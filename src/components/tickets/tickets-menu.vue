@@ -1,35 +1,27 @@
 <template>
   <section class="tickets-menu">
-    <div class="tickets-menu__item">
-      <button>
-        <font-awesome-icon :icon="['far', 'copy']"/>
-        Open
-      </button>
-    </div>
-    <div class="tickets-menu__item">
-      <button>
-        <font-awesome-icon icon="check"/>
-        Answered
-      </button>
-    </div>
-    <div class="tickets-menu__item">
-      <button>
-        <font-awesome-icon icon="user"/>
-        My Tickets
-      </button>
-    </div>
-    <div class="tickets-menu__item">
-      <button>
-        <font-awesome-icon icon="copy"/>
-        Closed Tickets
-      </button>
-    </div>
-    <div class="tickets-menu__item">
-      <button @click="createTicket">
-        <font-awesome-icon :icon="['far', 'file']"/>
-        New Ticket
-      </button>
-    </div>
+    <button class="tickets-menu__item">
+      <font-awesome-icon :icon="['far', 'copy']"/>
+      Open
+    </button>
+    <button class="tickets-menu__item">
+      <font-awesome-icon icon="check"/>
+      Answered
+    </button>
+    <button class="tickets-menu__item">
+      <font-awesome-icon icon="user"/>
+      My Tickets
+    </button>
+    <button class="tickets-menu__item">
+      <font-awesome-icon icon="copy"/>
+      Closed Tickets
+    </button>
+    <button
+      class="tickets-menu__item"
+      @click="createTicket">
+      <font-awesome-icon :icon="['far', 'file']"/>
+      New Ticket
+    </button>
   </section>
 </template>
 
@@ -44,23 +36,20 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  @import "~#/abstracts/variables";
   .tickets-menu {
-    display: flex;
     &__item {
-      & > * {
-        &:hover {
-          color: #FF7C01;
-        }
-        outline: none;
-        cursor: pointer;
-        border-radius: unset;
-        background-color: #e9e9e9;
-        padding: .5rem;
-        color: #7d7d7d;
-        font-weight: bold;
-        border-right: 1px solid gray;
-        border-bottom: 1px solid gray;
+      outline: none;
+      cursor: pointer;
+      background-color: $color-grey-light-1;
+      padding: .5rem;
+      color: $color-grey-dark-1;
+      font-weight: bold;
+      border-right: 1px solid gray;
+      border-bottom: 1px solid gray;
+      &:hover {
+        color: $color-secondary-1;
       }
     }
   }

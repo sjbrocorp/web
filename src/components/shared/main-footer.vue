@@ -1,7 +1,7 @@
 <template>
   <div class="main-footer">
-    <div class="main-footer__content">
-      <div class="main-footer__address">
+    <div class="row main-footer__content">
+      <div class="col-1-of-3 main-footer__address">
         <span class="main-footer__highlight">Comms Express Limited</span> <br>
         Unit 7 Grafton Place <br>
         Dukes Park Ind Estate <br>
@@ -9,7 +9,7 @@
         Essex <br>
         CM2 6TG
       </div>
-      <div class="main-footer__contact">
+      <div class="col-1-of-3 main-footer__contact">
         <font-awesome-icon
           class="main-footer__highlight"
           icon="phone"
@@ -19,7 +19,7 @@
           icon="fax"
         /> 0845 2000 257
       </div>
-      <div class="main-footer__copyright">
+      <div class="col-1-of-3 main-footer__copyright">
         Copyright © 2004 - 2018 <br>
         Comms Express Limited. <br>
         All rights reserved. E&OE.
@@ -28,23 +28,16 @@
   </div>
 </template>
 
-<style lang="scss">
-  @import "~#/variables";
+<style lang="scss" scoped>
+  @import "~#/abstracts/variables";
   .main-footer {
-    flex: 3;
-    background-color: #2D225C;
+    background-color: $color-primary-1;
 
     &__content {
-      width: 65%;
-      display: flex;
+      width: 50%;
+      padding: 1rem 1rem 4rem 1rem;
       color: $color-white;
       font-size: 1.2rem;
-
-      & > * {
-        padding: 1rem;
-      }
-    }
-    &__contact {
     }
     &__highlight {
       color: #ff6633;

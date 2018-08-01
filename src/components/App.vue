@@ -2,26 +2,27 @@
   <div class="app">
     <div
       v-if="authenticated"
-      class="app__main">
+      class="app__main"
+    >
       <main-wrapper/>
       <overlay/>
     </div>
     <div
       v-else
       class="app__login">
-      <login-form @loggedin="login"/>
+      <login-page @loggedin="login"/>
     </div>
   </div>
 </template>
 
 <script>
-import LoginForm from './auth/login-form.vue'
+import LoginPage from './auth/login-page.vue'
 import MainWrapper from './layouts/main-wrapper.vue'
 import Overlay from '@/components/shared/overlay.vue'
 import { cookie, event, router } from '@/services'
 import { sharedStore, userStore } from '@/stores'
 export default {
-  components: { LoginForm, MainWrapper, Overlay },
+  components: { LoginPage, MainWrapper, Overlay },
   data () {
     return {
       authenticated: false
@@ -62,21 +63,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "~#/variables";
-  @import "~#/mixins";
+<style lang="scss" scoped>
+@import "~#/abstracts/variables";
   .app {
-    &__login {
-      @include vertical-center();
-    }
     &__main {
+      height: 100vh;
       background-color: $color-bgr-secondary;
     }
-    &__login, &__main {
-      justify-content: center;
-      display: flex;
-      height: 100vh;
-    }
-
   }
 </style>

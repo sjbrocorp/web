@@ -1,40 +1,45 @@
 <template>
   <section class="ticket-list">
-    <table class="ticket-list__table ticket-list__table--header">
-      <thead>
-        <tr class="ticket-list__row">
-          <th
-            class="ticket-list__col ticket-list__col--header ticket-list__col--name"
-          >Name</th>
-          <th
-            class="ticket-list__col ticket-list__col--header ticket-list__col--email"
-          >Email</th>
-          <th
-            class="ticket-list__col ticket-list__col--header ticket-list__col--contact"
-          >Contact</th>
-          <th
-            class="ticket-list__col ticket-list__col--header ticket-list__col--telephone"
-          >Telephone</th>
-          <th
-            class="ticket-list__col ticket-list__col--header ticket-list__col--extension"
-          >Extension</th>
-          <th
-            class="ticket-list__col ticket-list__col--header ticket-list__col--description"
-          >Description</th>
-          <th
-            class="ticket-list__col ticket-list__col--header ticket-list__col--status"
-          >Status</th>
-        </tr>
-      </thead>
-    </table>
-    <virtual-scroller
-      :items="ticketRows"
-      :renderers="renderers"
-      item-height="25"
-      content-tag="table"
-      key-field="ticket.id"
-      class="ticket-list__table ticket-list__table--scroller"
-    />
+    <div class="ticket-list__info">
+      Showing {{ totalTickets }} Open Tickets
+    </div>
+    <div class="ticket-list__content">
+      <table class="ticket-list__table ticket-list__table--header">
+        <thead>
+          <tr class="ticket-list__row">
+            <th
+              class="ticket-list__col ticket-list__col--header ticket-list__col--name"
+            >Name</th>
+            <th
+              class="ticket-list__col ticket-list__col--header ticket-list__col--email"
+            >Email</th>
+            <th
+              class="ticket-list__col ticket-list__col--header ticket-list__col--contact"
+            >Contact</th>
+            <th
+              class="ticket-list__col ticket-list__col--header ticket-list__col--telephone"
+            >Telephone</th>
+            <th
+              class="ticket-list__col ticket-list__col--header ticket-list__col--extension"
+            >Extension</th>
+            <th
+              class="ticket-list__col ticket-list__col--header ticket-list__col--description"
+            >Description</th>
+            <th
+              class="ticket-list__col ticket-list__col--header ticket-list__col--status"
+            >Status</th>
+          </tr>
+        </thead>
+      </table>
+      <virtual-scroller
+        :items="ticketRows"
+        :renderers="renderers"
+        item-height="25"
+        content-tag="table"
+        key-field="ticket.id"
+        class="ticket-list__table ticket-list__table--scroller"
+      />
+    </div>
   </section>
 </template>
 
@@ -50,6 +55,11 @@ export default {
         ticket: TicketItem
       }),
       ticketRows: []
+    }
+  },
+  computed: {
+    totalTickets () {
+      return this.tickets.length
     }
   },
   watch: {
@@ -73,26 +83,37 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "~#/variables";
+<style lang="scss" scoped>
+  @import "~#/abstracts/variables";
   .ticket-list {
-    flex: 1;
-    position: relative;
+    /*background-color: red;*/
+    &__info {
+      color: $color-primary-1;
+      font-weight: bold;
+      padding: 0 4px;
+      height: 2.5rem;
+      line-height: 2.5rem;
+    }
+
+    &__content {
+      height: calc(100% - 2.5rem);
+      position: relative;
+    }
 
     &__table {
+      /*background-color: green;*/
       border-collapse: collapse;
       table-layout: fixed;
       width: 100%;
 
       &--header {
-        background-color: #a4a3a4;
+        background-color: $color-grey-dark-2;
         color: $color-white;
-        height: 19rem;
       }
 
       &--scroller {
         position: absolute;
-        top: 2rem;
+        top: 1.5rem;
         left: 0;
         right: 0;
         bottom: 0;
@@ -114,71 +135,71 @@ export default {
     }
 
     &__row {
-      display: flex;
-      height: 2rem;
+      /*display: flex;*/
+      /*height: 2rem;*/
       &:nth-child(2n) {
-        background-color: rgba(#d9eeff, .5);
+        /*background-color: rgba(#d9eeff, .5);*/
       }
       &--body {
-        cursor: pointer;
+        /*cursor: pointer;*/
         &:hover {
-          background-color: rgba(#f6ff90, .3);
+          /*background-color: rgba(#f6ff90, .3);*/
         }
       }
     }
     &__col {
-      display: block;
+      /*display: block;*/
       &:first-child {
-        border-left: 1px solid rgba(gray, .3);
+        /*border-left: 1px solid rgba(gray, .3);*/
       }
 
-      padding: 0 .5rem;
-      border-right: 1px solid rgba(gray, .3);
-      border-bottom: 1px solid rgba(gray, .3);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      /*padding: 0 .5rem;*/
+      /*border-right: 1px solid rgba(gray, .3);*/
+      /*border-bottom: 1px solid rgba(gray, .3);*/
+      /*overflow: hidden;*/
+      /*white-space: nowrap;*/
+      /*text-overflow: ellipsis;*/
       &--name {
-        width: 20%;
+        /*width: 20%;*/
       }
       &--email {
-        width: 20%;
+        /*width: 20%;*/
         /*flex: 2;*/
       }
       &--contact {
-        width: 10%;
+        /*width: 10%;*/
         /*flex: 2;*/
       }
       &--telephone {
-        width: 15%;
+        /*width: 15%;*/
         /*flex: 2;*/
       }
       &--extension {
-        width: 5%;
+        /*width: 5%;*/
         /*flex: 1;*/
       }
       &--description {
-        width: 20%;
+        /*width: 20%;*/
         /*flex: 3;*/
       }
       &--status {
-        width: 10%;
+        /*width: 10%;*/
         /*flex 3;*/
       }
       &--pending {
-        background-color: #fee3e4;
+        /*background-color: #fee3e4;*/
       }
       &--investigating {
-        background-color: #ffffee;
+        /*background-color: #ffffee;*/
       }
       &--awaiting-reply {
-        background-color: #d9d8ff;
+        /*background-color: #d9d8ff;*/
       }
       &--solved {
-        background-color: #d8ffd8;
+        /*background-color: #d8ffd8;*/
       }
       &--completed {
-        background-color: #f4f3f4;
+        /*background-color: #f4f3f4;*/
       }
     }
   }

@@ -2,7 +2,9 @@
   <div class="search-bar">
     <input
       type="text"
-      class="search-bar__input">
+      class="search-bar__input"
+      placeholder="Search..."
+    >
     <img
       class="search-bar__icon"
       src="static/img/search.png"
@@ -10,17 +12,23 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  @import "~#/abstracts/variables";
   .search-bar {
-    padding-top: 3rem;
+    position: relative;
+    width: 100%;
     text-align: right;
+
     &__input {
-      width: 30%;
+      width: 90%;
+      outline: 1px solid $color-grey;
     }
 
     &__icon {
+      height: 180%;
       position: absolute;
-      transform: translate(-90%, -5%);
+      top: -2px;
+      right: -2px;
     }
   }
 </style>

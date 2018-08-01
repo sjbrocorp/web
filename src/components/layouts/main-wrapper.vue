@@ -1,8 +1,8 @@
 <template>
   <section class="main-wrapper">
-    <main-header/>
-    <main-content/>
-    <main-footer/>
+    <main-header class="main-wrapper__header"/>
+    <main-content class="main-wrapper__content"/>
+    <main-footer class="main-wrapper__footer"/>
   </section>
 </template>
 
@@ -16,13 +16,37 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "~#/variables";
+<style lang="scss" scoped>
+  @import "~#/abstracts/variables";
+  @import "~#/abstracts/mixins";
   .main-wrapper {
     background-color: $color-bgr-primary;
-    width: 102rem;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 2rem .5rem 2rem;
+    padding: 0 2rem 1rem 2rem;
+    height: 100%;
+    margin: 0 auto;
+
+    width: 100rem;
+
+    @include respond(tab-land) {
+      width: 80rem;
+    }
+    @include respond(tab-port) {
+      width: 60rem;
+    }
+    @include respond(phone) {
+      width: 100%;
+    }
+
+    &__header {
+      height: $header-height;
+    }
+
+    &__content {
+      height: calc(100% - #{$header-height} - #{$footer-height});
+    }
+
+    &__footer {
+      height: $footer-height;
+    }
   }
 </style>

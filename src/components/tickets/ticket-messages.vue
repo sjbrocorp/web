@@ -3,7 +3,9 @@
     <ul class="ticket-messages__feed">
       <li
         v-for="message in ticket.messages"
-        :key="message.id">
+        :key="message.id"
+        class="ticket-messages__message"
+      >
         {{ message.created_at }} - {{ message.owner.name }} <br>
         {{ message.body }}
       </li>
@@ -16,11 +18,12 @@
           id="body"
           v-model="newMessage.body"
           name="body"
+          required
         />
       </label>
       <button
         type="submit"
-        class="ticket-messages__submit">Submit Message</button>
+        class="btn btn--submit ticket-messages__submit">Submit Message</button>
     </form>
   </div>
 </template>
@@ -61,19 +64,23 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "~#/mixins";
+<style lang="scss" scoped>
+  @import "~#/abstracts/mixins";
   .ticket-messages {
     display: flex;
     flex-direction: column;
     &__feed {
       flex: 1;
     }
+    &__message {
+      padding: 3px;
+      border-bottom: 1px solid grey;
+    }
     &__form {
       flex: 1;
+      padding: 5px;
     }
     &__submit {
-      @include submit-button();
       display: flex;
     }
   }

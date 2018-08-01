@@ -1,0 +1,34 @@
+// COLOURS
+$color-white: #fff;
+$color-black: #000;
+
+$color-grey: #aaa;
+$color-grey-light-1: #e2e2e2;
+$color-grey-light-2: #dedede;
+$color-grey-dark-1: #7d7d7d;
+$color-grey-dark-2: #a4a3a4;
+
+
+$color-primary-1: #2b2d5a;
+$color-secondary-1: #e75a35;
+
+$color-bgr-primary: $color-white;
+$color-bgr-secondary: $color-grey-light-2;
+$color-bgr-login: $color-bgr-primary;
+$color-border-primary: #ddd;
+$color-overlay: $color-grey;
+
+// TYPOGRAPHY
+$default-font-family: arial, helvetica, sans-serif;
+$default-font-size: 1.3rem;
+
+// LAYOUT
+$header-height: 10rem;
+$footer-height: 12rem;
+
+// GRID
+$grid-width: 114rem;
+$grid-width-small: 50rem;
+$gutter-vertical: 8rem;
+$gutter-vertical-small: 6rem;
+$gutter-horizontal: 2rem;

@@ -1,74 +1,72 @@
 <template>
   <div class="menu-bar">
-    <div
+    <a
       :class="{ 'menu-bar__link--active': currentView === 'tickets' }"
       class="menu-bar__link"
-    >
-      <a href="#!/tickets">Tickets</a>
-    </div>
-    <div
+      href="#!/tickets">
+      Tickets
+    </a>
+    <a
       class="menu-bar__link"
-    >
-      <a
-        href="#"
-        @click.prevent
-      >Knowledge Base</a>
-    </div>
-    <div
+      href="#">
+      Knowledge Base
+    </a>
+    <a
       class="menu-bar__link"
-    >
-      <a
-        href="#"
-        @click.prevent
-      >Directory</a>
-    </div>
-    <div
+      href="#">
+      Directory
+    </a>
+    <a
       class="menu-bar__link"
-    >
-      <a
-        href="#"
-        @click.prevent
-      >My Account</a>
-    </div>
-    <div
+      href="#"
+    >My Account
+    </a>
+    <a
       class="menu-bar__link"
-    >
-      <a
-        class="menu-bar__link"
-        href="#"
-        @click.prevent
-      >Returns System</a>
-    </div>
+      href="#"
+    >Returns System
+    </a>
+
   </div>
 </template>
 
 <script>
+import { event } from '@/services'
 export default {
   data () {
     return {
       currentView: ''
     }
+  },
+  created () {
+    event.on(event.$names.LOAD_MAIN_VIEW, (view) => {
+      this.currentView = view
+    })
   }
 }
 </script>
 
-<style lang="scss">
-  @import "~#/variables";
+<style lang="scss" scoped>
+  @import "~#/abstracts/variables";
   .menu-bar {
-    height: 2.5rem;
-    line-height: 2.5rem;
-    display: flex;
-    justify-content: flex-end;
-    color: $color-white;
+    line-height: 2rem;
 
     &__link {
-      background: linear-gradient(#ff805b 50%, #ff5b2d 50%);
-      border-radius: 4px 4px 0 0;
-      padding: 0 2.2rem;
-      margin: 1px;
-      font-weight: bold;
-      font-size: 1.2rem;
+      &:link,
+      &:visited {
+        background: linear-gradient(#ff805b 50%, #ff5b2d 50%);
+        color: $color-white;
+        border-radius: 0 0 4px 4px;
+        padding: 4px 1.5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        line-height: 2rem;
 
+        &:not(:last-child) {
+          margin-right: 1px;
+        }
+
+      }
       &:hover {
         text-decoration: underline;
       }

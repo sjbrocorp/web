@@ -1,0 +1,22 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 3px;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+  }
+
+  &__input {
+    width: 63%;
+    display: inline-block;
+    border: 1px solid rgba($color-black, .5);
+    transform: translateY(-1px);
+  }
+
+  &__label {
+    width: 35%;
+    display: inline-block;
+    text-align: right;
+    font-weight: 800;
+    padding-right: 5px;
+  }
+}

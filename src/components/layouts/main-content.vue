@@ -28,10 +28,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "~#/variables";
+<style lang="scss" scoped>
+  @import "~#/abstracts/variables";
   .main-content {
-    flex: 15;
-    display: flex;
+    & > * {
+      height: 100%;
+    }
   }
 </style>
