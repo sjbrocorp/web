@@ -28,10 +28,10 @@ export default {
     width: 100rem;
 
     @include respond(tab-land) {
-      width: 80rem;
+      width: 90rem;
     }
     @include respond(tab-port) {
-      width: 60rem;
+      width: 80rem;
     }
     @include respond(phone) {
       width: 100%;
@@ -39,10 +39,18 @@ export default {
 
     &__header {
       height: $header-height;
+
+      @include respond(tab-land) {
+        height: $header-height-medium;
+      }
     }
 
     &__content {
       height: calc(100% - #{$header-height} - #{$footer-height});
+
+      @include respond(tab-land) {
+        height: calc(100% - #{$header-height-medium} - #{$footer-height});
+      }
     }
 
     &__footer {

@@ -17,8 +17,8 @@ export default {
 
 <style lang="scss" scoped>
   .create-ticket {
-      height: 100%;
-      width: 100%;
-      display: flex;
+      /*height: 100%;*/
+      /*width: 100%;*/
+      /*display: flex;*/
   }
 </style>

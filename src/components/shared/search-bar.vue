@@ -20,7 +20,7 @@
     text-align: right;
 
     &__input {
-      width: 90%;
+      width: 100%;
       outline: 1px solid $color-grey;
     }
 

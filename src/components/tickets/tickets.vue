@@ -27,25 +27,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "~#/abstracts/variables";
+  @import "~#/abstracts/mixins";
   .tickets {
     &__header {
       border-bottom: 1px solid #a4a3a4;
       padding: 1rem 2rem;
-      height: 4.5rem;
+      height: $header-height-small;
+
+      @include respond(tab-land) {
+        height: $header-height;
+      }
     }
 
     &__menu {
       display: inline-block;
-      width: 50%
+      width: 50%;
+
+      @include respond(tab-land) {
+        text-align: center;
+        width: 100%;
+        display: block;
+        padding-bottom: .5rem;
+      }
     }
 
     &__search {
-      width: 49%;
+      width: 40%;
       display: inline-block;
+
+      @include respond(tab-land) {
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+      }
     }
 
     &__list {
-      height: calc(100% - 4.5rem);
+      height: calc(100% - #{$header-height-small});
+
+      @include respond(tab-land) {
+        height: calc(100% - #{$header-height});
+      }
     }
   }
 </style>

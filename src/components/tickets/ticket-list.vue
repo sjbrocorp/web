@@ -21,7 +21,7 @@
             >Telephone</th>
             <th
               class="ticket-list__col ticket-list__col--header ticket-list__col--extension"
-            >Extension</th>
+            >Ext.</th>
             <th
               class="ticket-list__col ticket-list__col--header ticket-list__col--description"
             >Description</th>
@@ -83,25 +83,23 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import "~#/abstracts/variables";
   .ticket-list {
-    /*background-color: red;*/
     &__info {
       color: $color-primary-1;
       font-weight: bold;
-      padding: 0 4px;
-      height: 2.5rem;
-      line-height: 2.5rem;
+      padding: 0 .4rem;
+      height: $header-height-tiny;
+      line-height: $header-height-tiny;
     }
 
     &__content {
-      height: calc(100% - 2.5rem);
+      height: calc(100% - #{$header-height-tiny});
       position: relative;
     }
 
     &__table {
-      /*background-color: green;*/
       border-collapse: collapse;
       table-layout: fixed;
       width: 100%;
@@ -109,11 +107,13 @@ export default {
       &--header {
         background-color: $color-grey-dark-2;
         color: $color-white;
+        height: $header-height-tiny;
+        line-height: $header-height-tiny;
       }
 
       &--scroller {
         position: absolute;
-        top: 1.5rem;
+        top: $header-height-tiny;
         left: 0;
         right: 0;
         bottom: 0;
@@ -127,6 +127,7 @@ export default {
           }
 
           .item {
+            // These must match item-height value on virtual-scroller component
             line-height: 25px;
             height: 25px;
           }
@@ -135,71 +136,53 @@ export default {
     }
 
     &__row {
-      /*display: flex;*/
-      /*height: 2rem;*/
       &:nth-child(2n) {
-        /*background-color: rgba(#d9eeff, .5);*/
+        background-color: rgba(#d9eeff, .5);
       }
       &--body {
-        /*cursor: pointer;*/
+        cursor: pointer;
         &:hover {
-          /*background-color: rgba(#f6ff90, .3);*/
+          background-color: rgba(#f6ff90, .3);
         }
       }
     }
     &__col {
-      /*display: block;*/
       &:first-child {
-        /*border-left: 1px solid rgba(gray, .3);*/
+        border-left: 1px solid rgba(gray, .3);
       }
 
-      /*padding: 0 .5rem;*/
-      /*border-right: 1px solid rgba(gray, .3);*/
-      /*border-bottom: 1px solid rgba(gray, .3);*/
-      /*overflow: hidden;*/
-      /*white-space: nowrap;*/
-      /*text-overflow: ellipsis;*/
-      &--name {
-        /*width: 20%;*/
-      }
-      &--email {
-        /*width: 20%;*/
-        /*flex: 2;*/
-      }
-      &--contact {
-        /*width: 10%;*/
-        /*flex: 2;*/
-      }
-      &--telephone {
-        /*width: 15%;*/
-        /*flex: 2;*/
-      }
+      padding: 0 .5rem;
+      border-right: 1px solid rgba(gray, .3);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      &--name {}
+      &--email {}
+      &--contact {}
+      &--telephone {}
       &--extension {
-        /*width: 5%;*/
-        /*flex: 1;*/
+        width: 4%;
       }
       &--description {
-        /*width: 20%;*/
-        /*flex: 3;*/
+        width: 25%;
       }
       &--status {
-        /*width: 10%;*/
-        /*flex 3;*/
+        width: 10%;
       }
       &--pending {
-        /*background-color: #fee3e4;*/
+        background-color: $color-pending;
       }
       &--investigating {
-        /*background-color: #ffffee;*/
+        background-color: $color-investigating;
       }
       &--awaiting-reply {
-        /*background-color: #d9d8ff;*/
+        background-color: $color-awaiting;
       }
       &--solved {
-        /*background-color: #d8ffd8;*/
+        background-color: $color-solved;
       }
       &--completed {
-        /*background-color: #f4f3f4;*/
+        background-color: $color-completed;
       }
     }
   }

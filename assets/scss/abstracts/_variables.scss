@@ -18,12 +18,21 @@ $color-bgr-login: $color-bgr-primary;
 $color-border-primary: #ddd;
 $color-overlay: $color-grey;
 
+$color-pending: #fee3e4;
+$color-investigating: #ffffee;
+$color-awaiting: #d9d8ff;
+$color-solved: #d8ffd8;
+$color-completed: #f4f3f4;
+
 // TYPOGRAPHY
 $default-font-family: arial, helvetica, sans-serif;
-$default-font-size: 1.3rem;
+$default-font-size: 1.1rem;
 
 // LAYOUT
-$header-height: 10rem;
+$header-height: 8rem;
+$header-height-medium: 6rem;
+$header-height-small: 4rem;
+$header-height-tiny: 2rem;
 $footer-height: 12rem;
 
 // GRID
@@ -32,3 +41,7 @@ $grid-width-small: 50rem;
 $gutter-vertical: 8rem;
 $gutter-vertical-small: 6rem;
 $gutter-horizontal: 2rem;
+
+
+// JS
+$scroller-item-height: 25px;
