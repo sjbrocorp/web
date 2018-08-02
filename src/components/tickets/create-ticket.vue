@@ -1,7 +1,9 @@
 <template>
   <div
     class="create-ticket">
-    <ticket-form type="create">
+    <ticket-form
+      class="create-ticket__form"
+      type="create">
       <span slot="header">Please fill in the form below to open a new ticket.</span>
       <span slot="submit">Create Ticket</span>
     </ticket-form>
@@ -17,8 +19,11 @@ export default {
 
 <style lang="scss" scoped>
   .create-ticket {
-      /*height: 100%;*/
-      /*width: 100%;*/
-      /*display: flex;*/
+    height: 100%;
+    padding: 0 3rem;
+
+    &__form {
+      margin: 0 auto;
+    }
   }
 </style>

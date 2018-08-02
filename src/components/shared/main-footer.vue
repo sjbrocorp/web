@@ -30,14 +30,19 @@
 
 <style lang="scss" scoped>
   @import "~#/abstracts/variables";
+  @import "~#/abstracts/mixins";
   .main-footer {
     background-color: $color-primary-1;
 
     &__content {
-      width: 50%;
       padding: 1rem 1rem 4rem 1rem;
       color: $color-white;
       font-size: 1.2rem;
+      width: 50%;
+
+      @include respond(tab-port) {
+        width: 100%;
+      }
     }
     &__highlight {
       color: #ff6633;

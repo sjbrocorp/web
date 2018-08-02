@@ -58,7 +58,6 @@ export default {
 
       @include respond(tab-land) {
         margin: 0 auto;
-        text-align: center;
         display: block;
       }
     }

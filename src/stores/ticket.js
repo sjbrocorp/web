@@ -1,10 +1,14 @@
 import { each } from 'lodash'
-import { http } from '@/services'
+import { http, config } from '@/services'
 import stub from '@/stubs/ticket'
 import Vue from 'vue'
 
 export const ticketStore = {
   stub,
+  $sources: config.tickets.sources,
+  $productTypes: config.tickets.productTypes,
+  $problemTypes: config.tickets.problemTypes,
+  $statuses: config.tickets.statuses,
   state: {
     tickets: [stub]
   },

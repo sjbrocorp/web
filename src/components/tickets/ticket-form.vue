@@ -1,210 +1,167 @@
 <template>
   <form
-    class="ticket-form"
+    class="ticket-form form"
     @submit.prevent="submitForm">
     <div class="ticket-form__header">
       <slot name="header"/>
     </div>
-    <div class="ticket-form__fields">
+    <div class="form__group form__group--required">
       <label
         for="email"
-        class="ticket-form__field ticket-form__field--required">
-        <span class="ticket-form__label">
-          Customer Email Address:
-        </span>
-        <input
-          id="email"
-          v-model="newTicket.email"
-          class="ticket-form__input"
-          type="email"
-          name="email"
-          required
-        >
-      </label>  <label
-        for="name"
-        class="ticket-form__field ticket-form__field--required">
-        <span class="ticket-form__label">
-          Customer Full Name:
-        </span>
-        <input
-          id="name"
-          v-model="newTicket.name"
-          class="ticket-form__input"
-          type="text"
-          name="name"
-          required>
+        class="form__label">
+        Customer Email Address:
       </label>
+      <input
+        id="email"
+        v-model="newTicket.email"
+        class="form__input"
+        type="email"
+        name="email"
+        required
+      >
+    </div>
+    <div class="form__group form__group--required">
+      <label
+        for="name"
+        class="form__label">
+        Customer Full Name:
+      </label>
+      <input
+        id="name"
+        v-model="newTicket.name"
+        class="form__input"
+        type="text"
+        name="name"
+        required>
+    </div>
+    <div class="form__group">
       <label
         for="contact"
-        class="ticket-form__field">
-        <span class="ticket-form__label">
-
-          Other Contact:
-        </span>
-        <input
-          id="contact"
-          v-model="newTicket.contact"
-          class="ticket-form__input"
-          type="text"
-          name="contact">
+        class="form__label">
+        Other Contact:
       </label>
+      <input
+        id="contact"
+        v-model="newTicket.contact"
+        class="form__input"
+        type="text"
+        name="contact">
+    </div>
+    <div class="form__group form__group--has-subgroup">
       <label
         for="telephone"
-        class="ticket-form__field">
-        <span class="ticket-form__label">
-
-          Customer Telephone:
-        </span>
-        <input
-          id="telephone"
-          v-model="newTicket.telephone"
-          class="ticket-form__input"
-          type="text"
-          name="telephone">
+        class="form__label">
+        Customer Telephone:
       </label>
+      <input
+        id="telephone"
+        v-model="newTicket.telephone"
+        class="form__input"
+        type="text"
+        name="telephone">
+    </div>
+    <div class="form__group form__group--subgroup">
       <label
         for="extension"
-        class="ticket-form__field">
-        <span class="ticket-form__label">
-
-          Ext:
-        </span>
-        <input
-          id="extension"
-          v-model="newTicket.extension"
-          class="ticket-form__input"
-          type="text"
-          name="extension">
+        class="form__label">
+        Ext:
       </label>
+      <input
+        id="extension"
+        v-model="newTicket.extension"
+        class="form__input"
+        type="text"
+        name="extension">
+    </div>
+    <div class="form__group form__group--required">
       <label
         for="source"
-        class="ticket-form__field ticket-form__field--required">
-        <span class="ticket-form__label">
-          Source:
-        </span>
-        <select
-          id="source"
-          v-model="newTicket.source"
-          name="source"
-          required
-        >
-          <option
-            value=""
-            disabled>Select One</option>
-          <option value="Email">Email</option>
-          <option value="Phone">Phone</option>
-          <option value="Other">Other</option>
-        </select>
+        class="form__label">
+        Source:
       </label>
+      <vue-select
+        id="source"
+        v-model="newTicket.source"
+        :options="sourceOptions"
+        :settings="{
+          width: '20rem',
+          placeholder: 'Select an option',
+        }"
+        class="form__select"
+        name="source"
+        required/>
+    </div>
+    <div class="form__group">
       <label
         for="productType"
-        class="ticket-form__field">
-        <span class="ticket-form__label">
-          Product Type:
-        </span>
-        <select
-          id="productType"
-          v-model="newTicket.productType"
-          name="productType"
-        >
-          <option
-            value=""
-            disabled>Select One</option>
-          <option value="Box Cable">Box Cable</option>
-          <option value="Cabinet Accessory">Cabinet Accessory</option>
-          <option value="Computer Cable">Computer Cable</option>
-          <option value="Console Drawer / KVM">Console Drawer / KVM</option>
-          <option value="Data/Server Cabinet">Data/Server Cabinet</option>
-          <option value="Data Centre Accessory">Data Centre Accessory</option>
-          <option value="Fibre Cable">Fibre Cable</option>
-          <option value="Modules/Outlets">Modules/Outlets</option>
-          <option value="Network Switch">Network Switch</option>
-          <option value="Patch Cable">Patch Cable</option>
-          <option value="Patch Panel">Patch Panel</option>
-          <option value="PDU Units">PDU Units</option>
-          <option value="Telephone Accessory">Telephone Accessory</option>
-          <option value="Test Tool">Test Tool</option>
-          <option value="Trunking">Trunking</option>
-          <option value="UPS / NAS">UPS / NAS</option>
-          <option value="Wall Cabinet">Wall Cabinet</option>
-          <option value="Other">Other</option>
-        </select>
+        class="form__label">
+        Product Type:
       </label>
+      <vue-select
+        id="productType"
+        v-model="newTicket.productType"
+        :options="productTypeOptions"
+        :settings="{
+          width: '20rem',
+          placeholder: 'Select an option',
+        }"
+        class="form__select"
+        name="productType"
+      />
+    </div>
+    <div class="form__group">
       <label
         for="problemType"
-        class="ticket-form__field">
-        <span class="ticket-form__label">
-          Problem Type:
-        </span>
-        <select
-          id="problemType"
-          v-model="newTicket.problemType"
-          name="problemType"
-        >
-          <option
-            value=""
-            disabled>Select One</option>
-          <option value="Admin Error">Admin Error</option>
-          <option value="Back Order Delay">Back Order Delay</option>
-          <option value="Billing Error">Billing Error</option>
-          <option value="Cabinet Damaged">Cabinet Damaged</option>
-          <option value="Courier Missort">Courier Missort</option>
-          <option value="Customer Complaint">Customer Complaint</option>
-          <option value="Customer Ordered Incorrect Cabinet">Customer Ordered Incorrect Cabinet</option>
-          <option value="Customer Ordered Incorrect Item">Customer Ordered Incorrect Item</option>
-          <option value="Damaged/Faulty Goods">Damaged/Faulty Goods</option>
-          <option value="Duplicate Order">Duplicate Order</option>
-          <option value="General Inquiry">General Inquiry</option>
-          <option value="Goods No Longer Required">Goods No Longer Required</option>
-          <option value="Incorrect Cabinet Received">Incorrect Cabinet Received</option>
-          <option value="Incorrect Item Received">Incorrect Item Received</option>
-          <option value="Late/No Delivery">Late/No Delivery</option>
-          <option value="Missing Goods">Missing Goods</option>
-          <option value="Product Defect">Product Defect</option>
-          <option value="Product Enquiry">Product Enquiry</option>
-          <option value="Purchase Order">Purchase Order</option>
-          <option value="Quote">Quote</option>
-          <option value="Returns Form">Returns Form</option>
-          <option value="Web Quote">Web Quote</option>
-          <option value="Other">Other</option>
-        </select>
+        class="form__label">
+        Problem Type:
       </label>
+      <vue-select
+        id="problemType"
+        v-model="newTicket.problemType"
+        :options="problemTypeOptions"
+        :settings="{
+          width: '20rem',
+          placeholder: 'Select an option',
+        }"
+        class="form__select"
+        name="problemType"
+      />
+    </div>
+    <div class="form__group form__group--required">
       <label
         for="description"
-        class="ticket-form__field ticket-form__field--required">
-        <span class="ticket-form__label">
-          Description:
-        </span>
-        <textarea
-          id="description"
-          v-model="newTicket.description"
-          class="ticket-form__input"
-          name="description"
-          required
-        />
+        class="form__label">
+        Description:
       </label>
-      <label
-        v-if="type === 'edit'"
-        for="status"
-        class="ticket-form__field"
-      >
-        <span class="ticket-form__label">
-          Status:
-        </span>
-        <select
-          id="status"
-          v-model="newTicket.status"
-          name="status"
-        >
-          <option value="Pending">Pending</option>
-          <option value="Investigating">Investigating</option>
-          <option value="Awaiting Reply">Awaiting Reply</option>
-          <option value="Solved">Solved</option>
-          <option value="Completed">Completed</option>
-        </select>
-      </label>
+      <textarea
+        id="description"
+        v-model="newTicket.description"
+        class="form__text"
+        name="description"
+        required
+      />
     </div>
-    <div class="ticket-form__buttons">
+    <div
+      v-if="type === 'edit'"
+      class="form__group form__group--required">
+      <label
+        for="status"
+        class="form__label">
+        Source:
+      </label>
+      <vue-select
+        id="status"
+        v-model="newTicket.status"
+        :options="statusOptions"
+        :settings="{
+          width: '20rem',
+          placeholder: 'Select an option',
+        }"
+        class="form__select"
+        name="status"
+        required/>
+    </div>
+    <div class="ticket-form__buttons u-margin-bottom-small">
       <button
         class="btn btn--submit"
         type="submit"><slot name="submit"/></button>
@@ -226,7 +183,11 @@ export default {
   data () {
     return {
       existingTicket: null,
-      newTicket: clone(ticketStore.stub)
+      newTicket: clone(ticketStore.stub),
+      sourceOptions: ticketStore.$sources,
+      productTypeOptions: ticketStore.$productTypes,
+      problemTypeOptions: ticketStore.$problemTypes,
+      statusOptions: ticketStore.$statuses
     }
   },
   created () {
@@ -278,45 +239,11 @@ export default {
   @import "~#/abstracts/mixins";
   .ticket-form {
     height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(grey, .4);
     &__header {
-      padding-bottom: 3px;
+      font-size: 1.4rem;
+      padding-bottom: 2px;
+      margin-bottom: .5rem;
       border-bottom: 1px solid rgba(grey, .4);
-    }
-
-    &__fields {
-      padding: 5px;
-      height: 90%;
-      display: flex;
-      flex-direction: column;
-    }
-    &__field {
-      padding: 3px 0;
-      &--required {
-
-        font-weight: bold;
-
-        &::after {
-          content: " *";
-          color: red;
-        }
-      }
-    }
-    &__label {
-      width: 20%;
-      display: inline-block;
-    }
-    &__input {
-      width: 30%;
-    }
-    &__buttons {
-      padding-top: 5px;
-      display: flex;
-      justify-content: flex-end;
     }
   }
 </style>

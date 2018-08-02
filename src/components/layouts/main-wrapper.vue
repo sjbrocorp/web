@@ -31,7 +31,7 @@ export default {
       width: 90rem;
     }
     @include respond(tab-port) {
-      width: 80rem;
+      width: 70rem;
     }
     @include respond(phone) {
       width: 100%;
@@ -47,6 +47,7 @@ export default {
 
     &__content {
       height: calc(100% - #{$header-height} - #{$footer-height});
+      overflow: scroll;
 
       @include respond(tab-land) {
         height: calc(100% - #{$header-height-medium} - #{$footer-height});

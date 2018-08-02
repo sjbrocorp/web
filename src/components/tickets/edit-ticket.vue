@@ -38,17 +38,17 @@ export default {
 
 <style lang="scss" scoped>
   .edit-ticket {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
 
     .edit-ticket__form {
-      flex: 1
+      /*flex: 1*/
     }
     .edit-ticket__messages {
-      flex: 1;
-      padding-top: 5px;
+      /*flex: 1;*/
+      /*padding-top: 5px;*/
     }
   }
 </style>
