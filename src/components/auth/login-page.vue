@@ -12,7 +12,7 @@
           @submit.prevent="login">
           <div class="form__group">
             <label
-              class="form__label"
+              class="form__label u-margin-right-small"
               for="email">Email:</label>
             <input
               id="email"
@@ -23,7 +23,7 @@
           </div>
           <div class="form__group">
             <label
-              class="form__label"
+              class="form__label u-margin-right-small"
               for="password">Password:</label>
             <input
               id="password"
@@ -78,7 +78,7 @@ export default {
     background-color: $color-bgr-login;
 
     &__logo {
-      height: 17rem;
+      height: 20rem;
       border: 5px solid $color-border-primary;
       padding: 2rem 3rem .4rem 3rem;
       background-color: $color-white;

@@ -34,7 +34,7 @@
       <virtual-scroller
         :items="ticketRows"
         :renderers="renderers"
-        item-height="25"
+        :item-height="itemHeight"
         content-tag="table"
         key-field="ticket.id"
         class="ticket-list__table ticket-list__table--scroller"
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { common as c } from '@/utils'
 import TicketItem from '@/components/tickets/ticket-item.vue'
 export default {
   props: {
@@ -60,6 +61,9 @@ export default {
   computed: {
     totalTickets () {
       return this.tickets.length
+    },
+    itemHeight () {
+      return Math.ceil(2.5 * c.oneRem())
     }
   },
   watch: {
@@ -128,8 +132,8 @@ export default {
 
           .item {
             // These must match item-height value on virtual-scroller component
-            line-height: 25px;
-            height: 25px;
+            line-height: 2.5rem;
+            height: 2.5rem;
           }
         }
       }
