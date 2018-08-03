@@ -4,6 +4,10 @@ import { ticketStore } from '@/stores'
 import stub from '@/stubs/ticket'
 import blob from '@/tests/blobs/ticket'
 
+Vue.config.ignoredElements = [
+  'vue-select'
+]
+
 describe('components/tickets/ticket-form', () => {
   let sandbox
   beforeEach(() => {
@@ -13,11 +17,11 @@ describe('components/tickets/ticket-form', () => {
     sandbox.restore()
   })
   it('opens', async () => {
-    const wrapper = shallowMount(TicketForm, { propsData: { type: 'create' } })
+    const wrapper = mount(TicketForm, { propsData: { type: 'create' } })
     wrapper.contains('form').should.be.true
   })
   it('can create a ticket', async () => {
-    const wrapper = shallowMount(TicketForm, { propsData: { type: 'create' } })
+    const wrapper = mount(TicketForm, { propsData: { type: 'create' } })
     wrapper.setData({ newTicket: blob })
     const storeStub = sandbox.stub(ticketStore, 'store')
     const alertStub = sandbox.stub(alerts, 'success')
@@ -30,7 +34,7 @@ describe('components/tickets/ticket-form', () => {
     expect(wrapper.vm.newTicket).toEqual(stub)
   })
   it('can edit a ticket', async () => {
-    const wrapper = shallowMount(TicketForm, { propsData: { type: 'edit' } })
+    const wrapper = mount(TicketForm, { propsData: { type: 'edit' } })
     const existingTicket = blob
     const newTicket = blob
     existingTicket.name = 'Foo'

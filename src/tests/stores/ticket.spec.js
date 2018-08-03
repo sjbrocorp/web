@@ -34,7 +34,7 @@ describe('stores/ticket', () => {
       ticketStore.init([ticketBlob])
       httpPostStub.callsArgWith(2, { data: ticketBlob })
       ticketStore.storeMessage(ticket, messageBlob)
-      httpPostStub.calledWith(`tickets/${ticket.id}/messages`, ticketBlob).should.be.true
+      httpPostStub.calledWith(`tickets/${ticket.id}/messages`, messageBlob).should.be.true
       expect(ticketStore.byId(ticket.id).messages).toContain(ticketBlob)
     })
   })

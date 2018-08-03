@@ -6,7 +6,6 @@ import App from './components/App.vue'
 import { http, config, cookie } from '@/services'
 import { VirtualScroller } from 'vue-virtual-scroller'
 import VueSelect from 'v-select2-component'
-
 Vue.component('virtual-scroller', VirtualScroller)
 Vue.component('vue-select', VueSelect)
 

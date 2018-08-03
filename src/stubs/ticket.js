@@ -7,5 +7,6 @@ export default {
   description: '',
   status: '',
   created_at: null,
-  updated_at: null
+  updated_at: null,
+  messages: []
 }

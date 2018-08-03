@@ -8,5 +8,6 @@ export default {
   description: 'This is a test ticket.',
   status: 'Pending',
   created_at: null,
-  updated_at: null
+  updated_at: null,
+  messages: []
 }
