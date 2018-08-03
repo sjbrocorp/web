@@ -8,25 +8,25 @@
         <thead>
           <tr class="ticket-list__row">
             <th
-              class="ticket-list__col ticket-list__col--header ticket-list__col--name"
+              class="ticket-list__col ticket-list__col--name"
             >Name</th>
             <th
-              class="ticket-list__col ticket-list__col--header ticket-list__col--email"
+              class="ticket-list__col ticket-list__col--email"
             >Email</th>
             <th
-              class="ticket-list__col ticket-list__col--header ticket-list__col--contact"
+              class="ticket-list__col ticket-list__col--contact"
             >Contact</th>
             <th
-              class="ticket-list__col ticket-list__col--header ticket-list__col--telephone"
+              class="ticket-list__col ticket-list__col--telephone"
             >Telephone</th>
             <th
-              class="ticket-list__col ticket-list__col--header ticket-list__col--extension"
+              class="ticket-list__col ticket-list__col--extension"
             >Ext.</th>
             <th
-              class="ticket-list__col ticket-list__col--header ticket-list__col--description"
+              class="ticket-list__col ticket-list__col--description"
             >Description</th>
             <th
-              class="ticket-list__col ticket-list__col--header ticket-list__col--status"
+              class="ticket-list__col ticket-list__col--status"
             >Status</th>
           </tr>
         </thead>
@@ -44,9 +44,12 @@
 </template>
 
 <script>
-import { common as c } from '@/utils'
+/* eslint-disable-next-line */
+import sassVariables from '!!mk-sass-variables-loader!../../../assets/scss/abstracts/_variables.scss'
 import TicketItem from '@/components/tickets/ticket-item.vue'
+import RefreshesRem from '@/mixins/refreshes-rem'
 export default {
+  mixins: [RefreshesRem],
   props: {
     tickets: { type: Array, required: true }
   },
@@ -63,16 +66,13 @@ export default {
       return this.tickets.length
     },
     itemHeight () {
-      return Math.ceil(2.5 * c.oneRem())
+      return Math.ceil(sassVariables['scroller-item-height'] * this.oneRem)
     }
   },
   watch: {
     tickets () {
       this.generateRows()
     }
-  },
-  mounted () {
-    this.generateRows()
   },
   methods: {
     generateRows () {
@@ -131,9 +131,8 @@ export default {
           }
 
           .item {
-            // These must match item-height value on virtual-scroller component
-            line-height: 2.5rem;
-            height: 2.5rem;
+            line-height: $scroller-item-height + rem;
+            height: $scroller-item-height + rem;
           }
         }
       }

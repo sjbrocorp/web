@@ -19,14 +19,11 @@
     "lodash": "^4.17.10",
     "mk-sass-variables-loader": "^0.0.11",
     "nprogress": "^0.2.0",
-    "sass-to-js-var-loader": "^0.0.2",
-    "sass-variable-loader": "^0.1.2",
     "select2": "^4.0.6-rc.1",
     "tiny-cookie": "^2.1.2",
     "v-select2-component": "^0.3.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
-    "vue-select2": "^0.2.6",
     "vue-virtual-scroller": "^0.12.0"
   },
   "devDependencies": {

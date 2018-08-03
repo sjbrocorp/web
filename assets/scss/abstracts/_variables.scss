@@ -9,7 +9,6 @@ $color-grey-dark-1: #7d7d7d;
 $color-grey-dark-2: #a4a3a4;
 $color-grey-dark-3: #333333;
 
-
 $color-primary-1: #2b2d5a;
 $color-secondary-1: #e75a35;
 $color-secondary-2: #db8606;
@@ -24,7 +23,6 @@ $color-pending: #fee3e4;
 $color-investigating: #ffffee;
 $color-awaiting: #d9d8ff;
 $color-solved: #d8ffd8;
-$color-completed: #f4f3f4;
 $color-completed: #f4f3f4;
 
 // TYPOGRAPHY
@@ -45,6 +43,5 @@ $gutter-vertical: 8rem;
 $gutter-vertical-small: 6rem;
 $gutter-horizontal: 2rem;
 
-
-// JS
-$scroller-item-height: 25px;
+// Virtual Scroller
+$scroller-item-height: 2.5;

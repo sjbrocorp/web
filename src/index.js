@@ -16,7 +16,6 @@ new Vue({
   created: () => {
     http.setBaseUrl(config.apiPath)
     http.setRequestHeader('Authorization', () => `Bearer ${cookie.get('jwt-token')}`)
-    // http.setRequestHeader()
     http.storeResponseData('access_token', 'jwt-token')
   },
   render: h => h(App)
