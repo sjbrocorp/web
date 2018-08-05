@@ -17,5 +17,5 @@
       ]
     }
   },
-  "plugins": ["istanbul"]
+  "plugins": ["istanbul", "babel-plugin-transform-object-rest-spread"]
 }
